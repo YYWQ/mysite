@@ -1,9 +1,11 @@
 from selenium import  webdriver
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 import unittest
+driver = webdriver.Firefox()
 
 class NewVisitorTest(unittest.TestCase):
 
@@ -13,6 +15,13 @@ class NewVisitorTest(unittest.TestCase):
         
     def tearDown(self):
         self.browser.quit()
+
+    def check_for_row_in_list_table(self,row_text):
+        #WebDriverWait(self.browser, 10).until(expected_conditions.text_to_be_present_in_element((By.ID, 'id_list_table'),row_text))
+        driver.implicitly_wait(10)
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text,[row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         #伊迪斯听说有一个很酷的应用
@@ -34,20 +43,26 @@ class NewVisitorTest(unittest.TestCase):
         #她按回车键后，页面更新了
         #待办事件表格中显示了“1.Buy peacock feathers”
         inputbox.send_keys(Keys.ENTER)
+        self.check_for_row_in_list_table('1:Buy peacock feathers')
 
-        WebDriverWait(self.browser, 10).until(expected_conditions.text_to_be_present_in_element((By.ID, 'id_list_table'), 'Buy peacock feathers'))
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
+        #WebDriverWait(self.browser, 10).until(expected_conditions.text_to_be_present_in_element((By.ID, 'id_list_table'), 'Buy peacock feathers'))
+        #table = self.browser.find_element_by_id('id_list_table')
+        #rows = table.find_elements_by_tag_name('tr')
         #self.assertTrue(any(row.text == '1:Buy peacock feathers' for row in rows),"New To-Do item did not appear in table")
-        self.assertIn('1:Buy peacock feathers',(row.text for row in rows))
+        #self.assertIn('1:Buy peacock feathers',(row.text for row in rows))
         
         
         #页面中又显示了一个文本框，可以输入其他事项
         #她输入了“Use peacock feathers to make a fiy”(使用孔雀羽毛做假蝇)
         #伊迪斯做事很有条理
-
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Use peacock feathers to make a fiy')
+        inputbox.send_keys(Keys.ENTER)
         
+
         #页面再次更新，请单中显示了这两个待办事项
+        self.check_for_row_in_list_table('1:Buy peacock feathers')
+        self.check_for_row_in_list_table('2:Use peacock feathers to make a fiy')
 
         self.fail("Finish the test!")
 
