@@ -26,9 +26,11 @@ class NewVisitorTest(LiveServerTestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         #伊迪斯听说有一个很酷的应用
         #她去看了应用的首页
+        
         self.browser.get(self.live_server_url)
 
         #她注意到网页的标题和头部都包含“TO-DO”这个词
+        time.sleep(5)
         self.assertIn("To-Do",self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do',header_text)
@@ -42,7 +44,9 @@ class NewVisitorTest(LiveServerTestCase):
         #她按回车键后，被带到了一个新URL
         #待办事件表格中显示了“1：Buy peacock feathers”
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(5)
         edith_list_url = self.browser.current_url
+        time.sleep(5)
         self.assertRegex(edith_list_url,'/lists/.+')
         self.check_for_row_in_list_table('1:Buy peacock feathers')
         
@@ -76,18 +80,16 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 
         #弗朗西斯获得了他的唯一url
+        time.sleep(5)
         francis_list_url = self.browser.current_url
+        time.sleep(5)
         self.assertRegex(francis_list_url,'/lists/.+')
         self.assertNotEqual(francis_list_url,edith_list_url)
 
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers',page_text)
-        self.assertNotIn('Do homework',page_text)
+        self.assertIn('Do homework',page_text)
         
-
-        #伊迪斯想知道这个网站是否会记住她的清单
-        #她看到网站为她生成了一个唯一的URL
-        #而且页面中有一些文字解说这个功能
 
         self.fail("Finish the test!")
 
