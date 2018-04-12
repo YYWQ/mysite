@@ -20,9 +20,7 @@ class NewVisitorTest(LiveServerTestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = self.browser.find_elements("css selector","tr")
         self.assertIn(row_text,[row.text for row in rows])
-        time.sleep(3)
         
-
     def test_can_start_a_list_and_retrieve_it_later(self):
         #伊迪斯听说有一个很酷的应用
         #她去看了应用的首页
@@ -30,7 +28,6 @@ class NewVisitorTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
 
         #她注意到网页的标题和头部都包含“TO-DO”这个词
-        time.sleep(1)
         self.assertIn("To-Do",self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do',header_text)
@@ -46,7 +43,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(3)
         edith_list_url = self.browser.current_url
-        time.sleep(1)
+        #time.sleep(1)
         self.assertRegex(edith_list_url,'/lists/.+')
         self.check_for_row_in_list_table('1:Buy peacock feathers')
         
@@ -82,9 +79,9 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 
         #弗朗西斯获得了他的唯一url
-        time.sleep(1)
+        time.sleep(5)
         francis_list_url = self.browser.current_url
-        time.sleep(1)
+        time.sleep(5)
         self.assertRegex(francis_list_url,'/lists/.+')
         self.assertNotEqual(francis_list_url,edith_list_url)
 
@@ -101,7 +98,6 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
                                512,delta=6.5)
-        time.sleep(1)
         #她新建了一个清单，看到输入框仍完美的居中显示
         inputbox.send_keys('testing\n')
         inputbox = self.browser.find_element_by_id('id_new_item')
