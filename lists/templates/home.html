@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
 {% block header_text %}Start a new To-Do list{% endblock %}
+{% block div%}
+	<div style="float:right;">
+		<hr><a>嘿！欢迎</a><hr/>
+	</div>
+{% endblock %}
 
-{%block form_action %}/lists/new{% endblock %}
+{% block form_action %}/lists/new{% endblock %}

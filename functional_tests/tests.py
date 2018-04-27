@@ -7,8 +7,23 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
+import sys
 
 class NewVisitorTest(StaticLiveServerTestCase):
+
+    @classmethod
+    def setUpClass(cls):#①
+        for arg in sys.argv:#②
+            if 'liveserver' in arg:#③
+                cls.server_url = 'http://' + arg.split('=')[1]#④
+                return#⑤
+        super().setUpClass()
+        cls.server_url = cls.live_server_url
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.server_url == cls.live_server_url:
+            super().tearDownClass()
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -26,7 +41,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         #伊迪斯听说有一个很酷的应用
         #她去看了应用的首页
         
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
 
         #她注意到网页的标题和头部都包含“TO-DO”这个词
         self.assertIn("To-Do",self.browser.title)
@@ -69,7 +84,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         #弗朗西斯访问首页
         #页面中看不到伊迪斯的清单
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers',page_text)
         self.assertNotIn('make a fly',page_text)
@@ -92,7 +107,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def test_layout_and_styling(self):
         #伊迪斯访问首页
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         self.browser.set_window_size(1024,768)
 
         #她看到输入框完美的居中展示
@@ -100,11 +115,11 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
                                #512,
                                self.browser.get_window_size().get("width")/2,
-                               delta=5)
+                               delta=7)
         #她新建了一个清单，看到输入框仍完美的居中显示
         inputbox.send_keys('testing\n')
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
-                               512,delta=6.5)
+                               512,delta=7)
         
 
