@@ -12,11 +12,11 @@ import sys
 class NewVisitorTest(StaticLiveServerTestCase):
 
     @classmethod
-    def setUpClass(cls):#①
-        for arg in sys.argv:#②
-            if 'liveserver' in arg:#③
-                cls.server_url = 'http://' + arg.split('=')[1]#④
-                return#⑤
+    def setUpClass(cls): #①
+        for arg in sys.argv: #②
+            if 'liveserver' in arg: #③
+                cls.server_url = 'http://' + arg.split('=')[1] #④
+                return #⑤
         super().setUpClass()
         cls.server_url = cls.live_server_url
 
