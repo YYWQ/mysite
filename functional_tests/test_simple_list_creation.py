@@ -1,42 +1,9 @@
-#from django.test import LiveServerTestCase
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from .base import FunctionalTest
 from selenium import  webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.keys import Keys
 import time
-import unittest
-import sys
 
-class NewVisitorTest(StaticLiveServerTestCase):
-
-    @classmethod
-    def setUpClass(cls): #①
-        for arg in sys.argv: #②
-            if 'liveserver' in arg: #③
-                cls.server_url = 'http://' + arg.split('=')[1] #④
-                return #⑤
-        super().setUpClass()
-        cls.server_url = cls.live_server_url
-
-    @classmethod
-    def tearDownClass(cls):
-        if cls.server_url == cls.live_server_url:
-            super().tearDownClass()
-
-    def setUp(self):
-        self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(10)
-        
-    def tearDown(self):
-        self.browser.quit()
-
-    def check_for_row_in_list_table(self,row_text):
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = self.browser.find_elements("css selector","tr")
-        self.assertIn(row_text,[row.text for row in rows])
-        
+class NewVisitorTest(FunctionalTest):        
     def test_can_start_a_list_and_retrieve_it_later(self):
         #伊迪斯听说有一个很酷的应用
         #她去看了应用的首页
@@ -72,7 +39,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
-        #页面再次更新，请单中显示了这两个待办事项
+        #页面再次更新，清单中显示了这两个待办事项
         self.check_for_row_in_list_table('2:Use peacock feathers to make a fly')
         self.check_for_row_in_list_table('1:Buy peacock feathers')
 
@@ -104,22 +71,4 @@ class NewVisitorTest(StaticLiveServerTestCase):
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers',page_text)
         self.assertIn('Do homework',page_text)
-
-    def test_layout_and_styling(self):
-        #伊迪斯访问首页
-        self.browser.get(self.server_url)
-        self.browser.set_window_size(1024,768)
-
-        #她看到输入框完美的居中展示
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
-                               #512,
-                               self.browser.get_window_size().get("width")/2,
-                               delta=7)
-        #她新建了一个清单，看到输入框仍完美的居中显示
-        inputbox.send_keys('testing\n')
-        inputbox = self.browser.find_element_by_id('id_new_item')
-        self.assertAlmostEqual(inputbox.location['x'] + inputbox.size['width'] / 2,
-                               512,delta=7)
-        
 
