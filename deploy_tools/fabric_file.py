@@ -1,9 +1,10 @@
-from fabric.contrib.files import append,exists,sed
-from fabric.api import env,local,run
+from fabric.contrib.files import append, exists, sed
+from fabric.api import env, local, run
 import random
 
 REPO_URL = 'https://github.com/YYWQ/mysite'
 
+#主函数，在命令行中调用这个函数
 def deploy():
     site_folder = '/home/%s/sites/%s' % (env.user, env.host)
     source_folder = site_folder + '/source'
@@ -14,10 +15,12 @@ def deploy():
     _update_static_files(source_folder)
     _update_database(source_folder)
 
+#创建目录结构
 def _create_directory_structure_if_necessary(site_folder):
     for subfolder in ('database', 'static','virtualenv', 'source'):
         run('mkdir -p %s/%s' % (site_folder, subfolder))
 
+#拉取源码
 def _get_latest_source(source_folder):
     if exists(source_folder + '/.git'):
         run('cd %s && git fetch' % (source_folder,))
@@ -28,6 +31,7 @@ def _get_latest_source(source_folder):
         % (source_folder,current_commit)
         )
 
+#更新配置文件
 def _update_settings(source_folder,site_name):
     settings_path = source_folder + '/mysite/settings.py'
     sed(settings_path, "DEBUG = True","DEBUG = False")
