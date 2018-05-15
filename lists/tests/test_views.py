@@ -2,6 +2,7 @@ from django.core.urlresolvers import resolve
 from django.test import TestCase
 from django.http import HttpRequest
 from django.template.loader import render_to_string
+from django.utils.html import escape
 
 from lists.views import home_page
 from lists.models import Item,List
@@ -72,6 +73,20 @@ class NewListTest(TestCase):
         )
         new_list = List.objects.first()
         self.assertRedirects(response,'/lists/%d/' % (new_list.id))
+
+    #新建清单视图有可能渲染首页所用模板，而且还会显示错误信息。
+    def test_validation_errors_are_sent_back_to_home_page_template(self):
+        response = self.client.post('/lists/new', data={'item_text': ''})
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home.html')
+        expected_error = escape("You can't have an empty list item")
+        self.assertContains(response,expected_error)
+
+     #测试确保不会保存空的待办事项
+    def test_invalid_list_items_arent_saved(self):
+        self.client.post('/lists/new', data={'item_text': ''})
+        self.assertEqual(List.objects.count(), 0)
+        self.assertEqual(Item.objects.count(), 0)
 
 class NewItemTest(TestCase):
     def test_can_save_a_POST_request_to_an_existing_list(self):
