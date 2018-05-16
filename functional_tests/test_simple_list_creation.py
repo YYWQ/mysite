@@ -33,15 +33,16 @@ class NewVisitorTest(FunctionalTest):
         #页面中又显示了一个文本框，可以输入其他事项
         #她输入了“Use peacock feathers to make a fly”(使用孔雀羽毛做假蝇)
         #伊迪斯做事很有条理
-        time.sleep(2)
+        time.sleep(3)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(10)
 
         #页面再次更新，清单中显示了这两个待办事项
-        self.check_for_row_in_list_table('2:Use peacock feathers to make a fly')
         self.check_for_row_in_list_table('1:Buy peacock feathers')
+        self.check_for_row_in_list_table('2:Use peacock feathers to make a fly')
+        
 
         #现在一个叫弗朗西斯的新用户访问了网站
         ##我们使用一个新浏览器会话
