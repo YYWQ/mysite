@@ -12236,3 +12236,62 @@ observe@resource://gre/modules/AsyncShutdown.jsm:535:9
 ###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
 
 1526459027609	geckodriver::marionette	ERROR	Failed to stop browser process
+1526472287453	geckodriver	INFO	geckodriver 0.20.0 (0ac3698a74a7b1a742682b8e704f1f418df827ed 2018-03-13)
+1526472287491	geckodriver	INFO	Listening on 127.0.0.1:11972
+1526472290516	mozrunner::runner	INFO	Running command: "D:\\2345Downloads\\Software\\Firehox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\lenovo\\AppData\\Local\\Temp\\rust_mozprofile.UVXlN9oHojrx"
+1526472292206	Marionette	INFO	Enabled via --marionette
+1526472297830	Marionette	INFO	Listening on port 11980
+1526472297956	Marionette	WARN	TLS certificate errors will be ignored for this session
+1526472299262	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+[Child 10624, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10624, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 4252, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1526472302105	geckodriver::marionette	ERROR	Failed to stop browser process
+1526472302428	geckodriver	INFO	geckodriver 0.20.0 (0ac3698a74a7b1a742682b8e704f1f418df827ed 2018-03-13)
+1526472302449	geckodriver	INFO	Listening on 127.0.0.1:12015
+1526472305479	mozrunner::runner	INFO	Running command: "D:\\2345Downloads\\Software\\Firehox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\lenovo\\AppData\\Local\\Temp\\rust_mozprofile.F4IAf4l0tV3j"
+1526472306922	Marionette	INFO	Enabled via --marionette
+1526472313580	Marionette	INFO	Listening on port 12023
+1526472313834	Marionette	WARN	TLS certificate errors will be ignored for this session
+1526472315166	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+[Child 10280, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10280, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8208, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8208, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 8420, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 4192, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 4192, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+console.error: 
+  Message: Error: Connection closed before committing the transaction.
+  Stack:
+    executeTransaction/promise</transactionPromise<@resource://gre/modules/Sqlite.jsm:617:19
+observe@resource://gre/modules/AsyncShutdown.jsm:535:9
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1526472318007	geckodriver::marionette	ERROR	Failed to stop browser process
+1526472318564	geckodriver	INFO	geckodriver 0.20.0 (0ac3698a74a7b1a742682b8e704f1f418df827ed 2018-03-13)
+1526472318586	geckodriver	INFO	Listening on 127.0.0.1:12054
+1526472321612	mozrunner::runner	INFO	Running command: "D:\\2345Downloads\\Software\\Firehox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\lenovo\\AppData\\Local\\Temp\\rust_mozprofile.JmqkAmMFgqLf"
+1526472323290	Marionette	INFO	Enabled via --marionette
+1526472327820	Marionette	INFO	Listening on port 12062
+1526472327878	Marionette	WARN	TLS certificate errors will be ignored for this session
+1526472328882	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///D:/2345Downloads/Software/Firehox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+[Child 10560, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10560, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5620, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5620, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2644, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2644, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+[GPU 4188, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1526472332224	geckodriver::marionette	ERROR	Failed to stop browser process

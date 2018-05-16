@@ -37,3 +37,7 @@ class FunctionalTest(StaticLiveServerTestCase):
         rows = self.browser.find_elements("css selector","tr")
         self.assertIn(row_text,[row.text for row in rows])
 
+    def get_item_input_box(self):
+        return self.browser.find_element_bt_id('id_text')
+        
+

@@ -7,7 +7,7 @@ class ItemValidationTest(FunctionalTest):
         #伊迪斯访问首页时，不小心提交了一个空的待办事项
         #输入框没输入内容，她就按下了回车键
         self.browser.get(self.server_url)
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('\n')
         inputbox.send_keys(Keys.ENTER)
 
@@ -17,13 +17,13 @@ class ItemValidationTest(FunctionalTest):
         self.assertEqual(error.text,"You can't have an empty list item")
 
         #她输入一些文字，然后再次提交，这次没问题了
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('Buy milk\n')
         inputbox.send_keys(Keys.ENTER)
         self.check_for_row_in_list_table('1:Buy milk')
 
         #她有点儿调皮，又提交了一个空待办事项
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('\n')
         inputbox.send_keys(Keys.ENTER)
         
@@ -33,7 +33,7 @@ class ItemValidationTest(FunctionalTest):
         self.assertEqual(error.text,"You can't have an empty list item")
         
         #输入文字后就没问题了
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('Make tea\n')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(2)
