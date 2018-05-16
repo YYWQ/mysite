@@ -1,5 +1,6 @@
 from django import forms
 from lists.models import Item
+
 EMPTY_LIST_ERROR = "You can't have an empty list item"
 
 #django提供的ModelForm类用于自动生成模型的表单
