@@ -58,7 +58,7 @@ class NewVisitorTest(FunctionalTest):
         self.assertNotIn('make a fly',page_text)
 
         #弗朗西斯输入新的待办事件
-        inputbox = get_item_input_box()
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('Do homework')
         inputbox.send_keys(Keys.ENTER)
 

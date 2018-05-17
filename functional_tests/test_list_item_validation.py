@@ -13,7 +13,8 @@ class ItemValidationTest(FunctionalTest):
 
         #首页刷新了，显示一个错误消息
         #提示待办事项不能为空
-        error = self.browser.find_element("css selector","span")
+        #error = self.browser.find_element("css selector","")
+        error = self.browser.find_element_by_class_name("help-block")
         self.assertEqual(error.text,"You can't have an empty list item")
 
         #她输入一些文字，然后再次提交，这次没问题了
@@ -29,7 +30,7 @@ class ItemValidationTest(FunctionalTest):
         
         #在清单页面她看到了一个类似的错误消息
         self.check_for_row_in_list_table('1:Buy milk')
-        error = self.browser.find_element("css selector","span")
+        error = self.browser.find_element_by_class_name("help-block")
         self.assertEqual(error.text,"You can't have an empty list item")
         
         #输入文字后就没问题了
